@@ -1,24 +1,41 @@
 //index.js
 const app = getApp()
-
+const db = wx.cloud.database()
+var whatthefuck="1";
 Page({
+  
   data: {
-      list: [{
-        text: "对话",
-        //iconPath: "/example/images/tabbar_icon_chat_default.png",
-       // selectedIconPath: "/example/images/tabbar_icon_chat_active.png",
-      },
-      {
-        text: "设置",
-        //iconPath: "/example/images/tabbar_icon_setting_default.png",
-       // selectedIconPath: "/example/images/tabbar_icon_setting_active.png",
-        badge: 'New'
-      }],
-      gradienn: '#000000'
+      gradienn: '#FF0000',
+      active: 'lesson',
+      activedate: 'mon',
+      listt: [{
+        name: 'div',
+        attrs: {
+          class: 'div_class',
+          style: 'line-height: 60rpx; color: red;'
+        },
+        children: [{
+          type: 'text',
+          text: whatthefuck,
+        }]
+      }]
     },
-    tabChange(e) {
-      console.log('tab change', e)
+
+  onChange(event) {
+    console.log(event.detail);
+    if (event.detail=="todo")
+    {
+      wx.switchTab({
+        url: '/pages/todo/todo'
+      })
+    }
+    else if (event.detail == "my") {
+      wx.switchTab({
+        url: '/pages/my/my'
+      })
+    }
   },
+
   onLoad: function() {
 
   }

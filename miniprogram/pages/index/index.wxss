@@ -15,7 +15,8 @@ page {
   width: 80%;
   background: linear-gradient(45deg,rgb(200, 61, 255), blue);
   color:#f6f6f6;
-  border-radius: 8rpx; 
+  border-radius: 8rpx;
+  align-items: center;
 }
 
 .btna.active{
@@ -23,4 +24,5 @@ page {
   background: linear-gradient(45deg,rgb(173, 53, 221), rgb(0, 0, 214));
   color:#f6f6f6;
   border-radius: 8rpx; 
+  align-items: center;
 }

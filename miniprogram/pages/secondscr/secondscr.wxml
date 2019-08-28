@@ -1,0 +1,6 @@
+<!--pages/secondscr/secondscr.wxml-->
+<van-steps
+  steps="{{ stepsnow }}"
+  active="{{ activenow }}"
+  active-color='#0006F2'
+/>

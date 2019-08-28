@@ -1,0 +1,7 @@
+
+
+<van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item name="lesson" icon="clock-o">课程</van-tabbar-item>
+  <van-tabbar-item name="todo" icon="todo-list-o">备忘</van-tabbar-item>
+  <van-tabbar-item name="my" icon="friends-o">我的</van-tabbar-item>
+</van-tabbar>

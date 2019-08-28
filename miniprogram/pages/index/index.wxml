@@ -1,13 +1,27 @@
 <!--index.wxml-->
-<!--view class='acolor'>a</view-->
 
 <van-tabbar active="{{ active }}" bind:change="onChange">
-  <van-tabbar-item icon="home-o">标签</van-tabbar-item>
-  <van-tabbar-item icon="search" dot>标签</van-tabbar-item>
-  <van-tabbar-item icon="friends-o" info="5">标签</van-tabbar-item>
-  <van-tabbar-item icon="setting-o" info="20">标签</van-tabbar-item>
+  <van-tabbar-item name="lesson" icon="clock-o">课程</van-tabbar-item>
+  <van-tabbar-item name="todo" icon="todo-list-o">备忘</van-tabbar-item>
+  <van-tabbar-item name="my" icon="friends-o">我的</van-tabbar-item>
 </van-tabbar>
+<van-tabs sticky animated swipeable active="{{ activedate }}">
+  <van-tab title="周一">
+   <view class='blank20'></view> 
+  </van-tab>
+  <van-tab title="周二">
+    <view class='blank20'></view>
+  </van-tab>
+  <van-tab title="周三">
+    <view class='blank20'></view>
+  </van-tab>
+  <van-tab title="周四">121212</van-tab>
+  <van-tab title="周五">1212121</van-tab>
+  <van-tab title="周六">1233</van-tab>
+  <van-tab title="周日">33244</van-tab>
+</van-tabs>
 <view class='container'>
-  <van-button class='test' type="primary">按钮</van-button>
-  <button class='btna' hover-class='.btna.active'>测试按钮</button>
+  <!--van-button color='{{gradienn}}' size="large" hover-class='btna.active'>按钮</van-button-->
+  <!--button class='btna' hover-class='btna.active'>自动导入</button-->
+  <rich-text nodes="{{listt}}"></rich-text>
 </view>
