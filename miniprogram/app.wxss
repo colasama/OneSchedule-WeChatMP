@@ -154,3 +154,12 @@ page {
   line-height: 36rpx;
   word-break: break-all;
 }
+
+.container{
+  background-color: rgb(255, 255, 255);
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
