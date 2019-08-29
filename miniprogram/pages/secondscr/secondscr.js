@@ -1,4 +1,7 @@
 // pages/secondscr/secondscr.js
+const db = wx.cloud.database();
+var extraLine = [];
+var num = [1,2,3,4,5,6,7];
 Page({
 
   /**
@@ -6,6 +9,8 @@ Page({
    */
   data: {
     activenow:0,
+    mon: [],
+    tue:[1,2,3],
     stepsnow: [
       {
         text: '获取用户信息'
@@ -18,12 +23,44 @@ Page({
       }
     ]
   },
-
+  
+  lSearch: function(e){
+    db.collection('timetable').doc('user').get({
+      success: function (res) {
+        console.log(res.data);
+        this.setData({
+          mon:res.data
+        })
+        console.log(mon)
+      },
+      fail: function(res){
+        console.log("fail")
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var _this = this;
+    db.collection('timetable').doc('user').get({
+      success: res =>{
+        console.log(res.data)
+        console.log("rua")
+        this.setData({
+          mon: res.data
+        })
+        console.log("rua1")
+        console.log(mon)
+      },
+      fail: function (res) {
+        console.log("fail")
+      }
+    })
+    extraLine.push('title'),
+    this.setData({
+      text:  extraLine.join('\n')
+    })
   },
 
   /**

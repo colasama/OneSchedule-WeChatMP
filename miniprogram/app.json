@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/firstlaunch/index",
     "pages/secondscr/secondscr",
+    "pages/firstlaunch/index",
+    
     "pages/index/index",
     "pages/todo/todo",
     "pages/my/my"
@@ -23,7 +24,9 @@
     "van-col": "/miniprogram_npm/vant-weapp/col/index",
     "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
     "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
-    "van-steps": "/miniprogram_npm/vant-weapp/steps/index"
+    "van-steps": "/miniprogram_npm/vant-weapp/steps/index",
+    "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
+    "van-cell-group": "/miniprogram_npm/vant-weapp/cell-group/index"
   },
 
   "tabBar": {

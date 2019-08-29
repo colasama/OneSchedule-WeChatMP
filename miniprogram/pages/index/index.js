@@ -1,6 +1,5 @@
 //index.js
 const app = getApp()
-const db = wx.cloud.database()
 var whatthefuck="1";
 Page({
   

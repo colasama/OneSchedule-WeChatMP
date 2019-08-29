@@ -9,6 +9,9 @@ Page({
   },
 
   next: function(){
+      wx.getUserInfo({
+        
+      })
       wx.redirectTo({
         url: '/pages/secondscr/secondscr',
       })

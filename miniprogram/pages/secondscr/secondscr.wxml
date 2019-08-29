@@ -4,3 +4,17 @@
   active="{{ activenow }}"
   active-color='#0006F2'
 />
+
+<button bindtap="lSearch">test</button>
+<text>{{text}}</text>
+<view wx:for="{{tue}}">
+  <van-cell
+  title="1"
+  value='{{tue[index]}}'
+  />
+</view>
+
+  <van-cell
+  title="1"
+  value="{{item.mon}}"
+  />
