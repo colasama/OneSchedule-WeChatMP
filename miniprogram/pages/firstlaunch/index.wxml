@@ -23,5 +23,5 @@
     <view class='blank20'></view>
     <view class='blank5'></view>
     <view class='blank5'></view>
-    <button class='fstbtn' bindtap="next" hover-class='fstbtn.active'>下一步</button>
+    <button class='fstbtn' bindtap="next" hover-class='fstbtn.active'>获取用户信息</button>
   </view>

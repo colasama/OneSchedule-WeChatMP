@@ -7,15 +7,33 @@
 </van-tabbar>
 <van-tabs sticky animated swipeable active="{{ activedate }}">
   <van-tab title="周一">
-   <view class='blank20'></view> 
+    <view wx:for="{{ne.mon}}">
+    <van-cell
+    title="第{{index+1}}节"
+    value='{{ne.mon[index]}}'
+    />
+    </view>
   </van-tab>
   <van-tab title="周二">
-    <view class='blank20'></view>
+    <view wx:for="{{ne.mon}}">
+    <van-cell
+    title="第{{index+1}}节"
+    value='{{ne.mon[index]}}'
+    />
+    </view>
   </van-tab>
   <van-tab title="周三">
     <view class='blank20'></view>
   </van-tab>
-  <van-tab title="周四">121212</van-tab>
+  <van-tab title="周四">
+    <view wx:for="{{ne.mon}}">
+    <van-cell
+    title="第{{index+1}}节"
+    value='{{ne.mon[index]}}'
+    />
+    </view>
+  </van-tab>
+
   <van-tab title="周五">1212121</van-tab>
   <van-tab title="周六">1233</van-tab>
   <van-tab title="周日">33244</van-tab>
@@ -23,5 +41,5 @@
 <view class='container'>
   <!--van-button color='{{gradienn}}' size="large" hover-class='btna.active'>按钮</van-button-->
   <!--button class='btna' hover-class='btna.active'>自动导入</button-->
-  <rich-text nodes="{{listt}}"></rich-text>
+  <!--rich-text nodes="{{listt}}"></rich-text-->
 </view>

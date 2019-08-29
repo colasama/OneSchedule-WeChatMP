@@ -1,0 +1,50 @@
+/* pages/firstlaunch/fst.wxss */
+
+.wowww{
+  text-align:left;
+  font-size: 80rpx;
+  header:true;
+}
+
+.wowww2{
+  text-align:left;
+  font-size: 80rpx;
+  header:true;
+}
+
+.wowww3{
+  color:rgb(77, 160, 255);
+  font-size: 24rpx;
+  align-items: left;
+}
+
+.fstbtn{
+  width: 60%;
+  background: linear-gradient(45deg,rgb(200, 61, 255), blue);
+  color:#f6f6f6;
+  border-radius: 8rpx;
+  align-items: right;
+}
+
+.fstbtn.active{
+  width: 60%;
+  background: linear-gradient(45deg,rgb(173, 53, 221), rgb(0, 0, 214));
+  color:#f6f6f6;
+  border-radius: 8rpx; 
+  align-items: right;
+}
+
+.fstcontainer{
+  display: flex;
+  flex-direction: column;  
+  justify-content: flex-end;
+  align-items:flex-end;
+}
+
+.blank5{
+  height:5vh;
+}
+
+.blank20{
+  height:20vh;
+}

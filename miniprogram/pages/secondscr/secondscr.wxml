@@ -1,20 +1,13 @@
 <!--pages/secondscr/secondscr.wxml-->
-<van-steps
+<!--van-steps
   steps="{{ stepsnow }}"
   active="{{ activenow }}"
   active-color='#0006F2'
-/>
+/-->
 
-<button bindtap="lSearch">test</button>
-<text>{{text}}</text>
-<view wx:for="{{tue}}">
+<view wx:for="{{ne.mon}}">
   <van-cell
-  title="1"
-  value='{{tue[index]}}'
+  title="第{{index+1}}节"
+  value='{{ne.mon[index]}}'
   />
 </view>
-
-  <van-cell
-  title="1"
-  value="{{item.mon}}"
-  />

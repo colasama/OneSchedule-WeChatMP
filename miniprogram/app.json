@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/secondscr/secondscr",
     "pages/firstlaunch/index",
-    
+    "pages/import/import",
     "pages/index/index",
+    "pages/secondscr/secondscr",
     "pages/todo/todo",
     "pages/my/my"
   ],
@@ -26,7 +26,9 @@
     "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
     "van-steps": "/miniprogram_npm/vant-weapp/steps/index",
     "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
-    "van-cell-group": "/miniprogram_npm/vant-weapp/cell-group/index"
+    "van-cell-group": "/miniprogram_npm/vant-weapp/cell-group/index",
+    "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
+    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index"
   },
 
   "tabBar": {

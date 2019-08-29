@@ -1,26 +1,32 @@
 
 Page({
-  
+
   /**
    * 页面的初始数据
    */
+  
   data: {
-    active: 'todo'
+    active: 'todo',
+    show: false
   },
+  showTutorial: function(){
+    this.setData({
+      show:true
+    })
+  },
+  next: function () {
+    wx.getUserInfo({
 
-  next: function(){
-      wx.getUserInfo({
-        
-      })
-      wx.redirectTo({
-        url: '/pages/import/import',
-      })
-  }, 
+    })
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
@@ -70,5 +76,9 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  onClose() {
+    this.setData({ show: false });
   }
 })

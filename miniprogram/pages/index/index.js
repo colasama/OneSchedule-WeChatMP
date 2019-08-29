@@ -1,10 +1,12 @@
 //index.js
+const db = wx.cloud.database();
 const app = getApp()
 var whatthefuck="1";
 Page({
   
   data: {
       gradienn: '#FF0000',
+      ne:[],
       active: 'lesson',
       activedate: 'mon',
       listt: [{
@@ -36,7 +38,22 @@ Page({
   },
 
   onLoad: function() {
+    var that = this;
+    db.collection('timetable').doc('user').get({
+      success: res => {
+        console.log(res.data)
+        console.log("rua")
+        that.setData({
+          ne: res.data
+        })
+        console.log(ne)
+        console.log("rua1")
 
+      },
+      fail: function (res) {
+        console.log("fail")
+      }
+    })
   }
 
 })

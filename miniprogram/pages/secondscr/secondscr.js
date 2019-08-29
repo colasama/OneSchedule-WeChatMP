@@ -9,7 +9,7 @@ Page({
    */
   data: {
     activenow:0,
-    mon: [],
+    ne:[],
     tue:[1,2,3],
     stepsnow: [
       {
@@ -29,9 +29,9 @@ Page({
       success: function (res) {
         console.log(res.data);
         this.setData({
-          mon:res.data
+          ne:res.data
         })
-        console.log(mon)
+        console.log(ne)
       },
       fail: function(res){
         console.log("fail")
@@ -42,25 +42,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var _this = this;
+    var that = this;
     db.collection('timetable').doc('user').get({
       success: res =>{
         console.log(res.data)
         console.log("rua")
-        this.setData({
-          mon: res.data
+        that.setData({
+          ne: res.data
         })
+        console.log(ne)
         console.log("rua1")
-        console.log(mon)
+        
       },
       fail: function (res) {
         console.log("fail")
       }
     })
-    extraLine.push('title'),
-    this.setData({
-      text:  extraLine.join('\n')
-    })
+    //extraLine.push('title'),
+    //_this.setData({
+    //  text:  extraLine.join('\n')
+    //})
   },
 
   /**
