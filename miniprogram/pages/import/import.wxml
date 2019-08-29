@@ -21,8 +21,7 @@
 
   <view class='fstcontainer'>
   <view class='blank5'></view>
-    <button class='wowww3' bind-tap='showTutorial'>点我查看教程</button>
-    <van-popup show="{{ show }}" bind:close="onClose">内容</van-popup>
+    <button class='wowww3' bindtap='showTutorial'>点我查看教程</button>
     <view class='blank20'></view>
     <view class='blank20'></view>
     <button class='fstbtn' bindtap="next" hover-class='fstbtn.active'>立即导入</button>

@@ -5,7 +5,8 @@
     "pages/index/index",
     "pages/secondscr/secondscr",
     "pages/todo/todo",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/tutorial/tutorial"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -28,7 +29,8 @@
     "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
     "van-cell-group": "/miniprogram_npm/vant-weapp/cell-group/index",
     "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
-    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index"
+    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index",
+    "van-nav-bar": "/miniprogram_npm/vant-weapp/nav-bar/index"
   },
 
   "tabBar": {

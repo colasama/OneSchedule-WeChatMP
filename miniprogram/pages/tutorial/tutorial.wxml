@@ -1,0 +1,23 @@
+<!--index.wxml-->
+
+
+  <!--van-button color='{{gradienn}}' size="large" hover-class='btna.active'>按钮</van-button-->
+  <van-col offset="2" gutter="20">
+    <van-row>
+      <view class='blank5'></view>
+    </van-row>
+    <van-row>
+      <rich-text class='wowww'>自动导入教程</rich-text>
+    </van-row>
+
+  </van-col>
+
+
+  <view class='fstcontainer'>
+    <view class='blank20'></view>
+    <view class='blank20'></view>
+    <view class='blank20'></view>
+    <view class='blank5'></view>
+    <view class='blank5'></view>
+    <button class='fstbtn' bindtap="next" hover-class='fstbtn.active'>返回</button>
+  </view>

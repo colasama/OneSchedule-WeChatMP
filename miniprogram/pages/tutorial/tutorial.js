@@ -1,27 +1,13 @@
-
+// pages/tutorial/tutorial.js
 Page({
 
   /**
    * 页面的初始数据
    */
-  
   data: {
-    active: 'todo',
-    show: false
-  },
-  showTutorial: function(){
-    wx.navigateTo({
-      url: '/pages/tutorial/tutorial',
-    })
-  },
-  next: function () {
-    wx.getUserInfo({
 
-    })
-    wx.switchTab({
-      url: '/pages/index/index',
-    })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -54,7 +40,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    wx.hideTabBar({});//快乐隐藏TabBar
+
   },
 
   /**
@@ -78,7 +64,7 @@ Page({
 
   },
 
-  onClose() {
-    this.setData({ show: false });
+  onClickLeft() {
+    wx.showToast({ title: '点击返回', icon: 'none' });
   }
 })

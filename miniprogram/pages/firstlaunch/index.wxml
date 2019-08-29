@@ -21,7 +21,7 @@
   <view class='fstcontainer'>
     <view class='blank20'></view>
     <view class='blank20'></view>
+    <button class='fstbtn' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"  hover-class='fstbtn.active'>获取用户信息</button>
     <view class='blank5'></view>
-    <view class='blank5'></view>
-    <button class='fstbtn' bindtap="next" hover-class='fstbtn.active'>获取用户信息</button>
+        <button class='fstbtn' bindtap='next' hover-class='fstbtn.active'>下一步</button>
   </view>

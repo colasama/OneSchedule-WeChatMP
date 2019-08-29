@@ -8,10 +8,16 @@ Page({
     active: 'todo'
   },
 
-  next: function(){
-      wx.getUserInfo({
-        
-      })
+  bindGetUserInfo(res) {
+    console.log(res);
+    if (res.detail.userInfo) {
+      console.log("点击了同意授权");
+    } else {
+      console.log("点击了拒绝授权");
+    };
+  },
+
+  next: function(e){
       wx.redirectTo({
         url: '/pages/import/import',
       })
@@ -20,7 +26,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
