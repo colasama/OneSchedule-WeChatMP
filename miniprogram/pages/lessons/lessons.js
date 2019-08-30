@@ -1,7 +1,7 @@
 import Toast from '/vant-weapp/toast/toast';
 const db = wx.cloud.database();
-var app = getApp()
-
+var app = getApp();
+app.globalData.userId=17637;
 Page({
   data: {
     lessonDay:0,
@@ -10,7 +10,6 @@ Page({
     lessonPlace:"",
     active:"lesson",
     tabactive:0,
-    columns: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
     show:true,
     colorArrays: ["#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#0A9A84", "#61BC69", "#12AEF3", "#E29AAD"],
     wlist: [
@@ -24,7 +23,7 @@ Page({
     ]
   },
   onLoad: function () {
-    
+
     console.log('onLoad')
   },
   
@@ -46,10 +45,16 @@ Page({
     Toast(`当前值：${value}, 当前索引：${index}`);
   },
   onTimeClick: function(event){
-    //console.log(event.detail.index);
     var that = this;
     that.setData({
       lessonTime: event.detail.index
+    })
+  },
+
+  onDayClick: function (event) {
+    var that = this;
+    that.setData({
+      lessonDay: event.detail.index
     })
   },
 
@@ -59,32 +64,43 @@ Page({
     })
   },
 
-  addConfirm: function(e){
+  handleInputLesson:function(e){
     var that=this;
-    db.collection('timetable').add({
-      data: {
-         _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
-        lesson:[
-          lessonDay= lessonDay,
-          lessonTime = lessonTime,
-          lessonLength=2,
-          lessonName = lessonName,
-          lessonPlace = lessonPlace,
-        ],
-      },
-      success: function (res) {
-        // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-        console.log(res)
-      }
+    this.setData({
+      lessonName:e.detail.value,
     })
   },
 
-  onDayClick: function (event) {
+  handleInputPlace: function (e) {
     var that = this;
-    that.setData({
-      lessonDay:event.detail.index
+    this.setData({
+      lessonPlace: e.detail.value,
     })
   },
+
+  addConfirm: function(e){
+    var that = this
+    db.collection('timetable').add({
+      data: {
+        _id: app.globalData.userId,// 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
+         lesson:[
+           app.globalData.userId,
+           that.data.lessonDay,
+           that.data.lessonTime,
+           2,
+           that.data.lessonName,
+           that.data.lessonPlace,
+         ]
+      },
+      success: function (res) {
+        console.log(res)
+      },
+    })
+    this.setData({
+      show: false
+    })
+  },
+
   onClose(){
     this.setData({
       show:false,

@@ -116,13 +116,12 @@
 <view class="layout_horizontal">
 <text style="padding-left：10px;font-size:16px;">添加课程</text>
 </view>
-
 <view class="layout_horizontal">
   <!--text style="white-space:pre-wrap;font-size:14px;">课程</text-->
-  <input id="lessonN" value='{{lessonName}}' class='input-radius' focus="true" confirm-type="next" placeholder="请输入课程名称"></input>
+  <input id="lessonN" bindinput="handleInputLesson" value='{{lessonName}}' class='input-radius' focus="true" confirm-type="next" placeholder="请输入课程名称"></input>
 </view>
 <view class="layout_horizontal">
-  <input id="lessonP" value='{{lessonPlace}}' class='input-radius' focus="true" confirm-type="next" placeholder="请输入上课地点"></input>
+  <input id="lessonP" bindinput="handleInputPlace" value='{{lessonPlace}}' class='input-radius' focus="true" confirm-type="next" placeholder="请输入上课地点"></input>
 </view>
 <view class="layout_horizontal">
 <van-button plain size='small' bindtap='addCancel'>取消</van-button>

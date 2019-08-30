@@ -2,7 +2,7 @@
 //app.js
 App({
   globalData:{
-    userId:'',
+    userId:1,
   },
   onLaunch: function () {
     wx.hideTabBar({});//隐藏了默认TabBar
