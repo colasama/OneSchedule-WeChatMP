@@ -1,6 +1,5 @@
 import Toast from '/vant-weapp/toast/toast';
 const db = wx.cloud.database();
-
 var app = getApp();
 Page({
   data: {
@@ -18,6 +17,7 @@ Page({
   },
 
   onLoad() {
+    console.log(app.userIII)
     var that = this
     wx.cloud.callFunction({
       name: 'getopenid',
@@ -39,9 +39,9 @@ getOpenid() {
 },
 viewLessons(){
   var that=this
-  console.log("fuck" + that.data.openid)
+  console.log("fuck" + app.userIII)
     db.collection('timetable').where({
-      _openid: that.data.openid
+      _openid: app.userIII
     })
       .get({
         success: function (res) {
@@ -67,6 +67,7 @@ viewLessons(){
       })
     }
   },
+
   onSelectChange(event) {
     const { picker, value, index } = event.detail;
     Toast(`当前值：${value}, 当前索引：${index}`);

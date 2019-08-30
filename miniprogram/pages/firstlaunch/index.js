@@ -1,6 +1,5 @@
-
+var app=getApp()
 Page({
-  
   /**
    * 页面的初始数据
    */
@@ -26,7 +25,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(app.userIII)
+    wx.cloud.callFunction({
+      name: 'getopenid',
+      complete: res => {
+        var openide = res.result.openid
+        // console.log(openide)
+        app.userIII=openide
 
+        this.setData({
+          noopenid: openide,
+          oooooopenid: openide
+        }) 
+        console.log(app.userIII)
+      }
+    })
   },
 
   /**
