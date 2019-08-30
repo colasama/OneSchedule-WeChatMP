@@ -19,7 +19,7 @@ Page({
 
   next: function(e){
       wx.redirectTo({
-        url: '/pages/import/import',
+        url: '/pages/lessons/lessons',
       })
   }, 
   /**

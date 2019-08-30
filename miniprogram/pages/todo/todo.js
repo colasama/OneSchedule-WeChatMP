@@ -26,7 +26,7 @@ Page({
     console.log(event.detail);
     if (event.detail == "lesson") {
       wx.switchTab({
-        url: '/pages/index/index'
+        url: '/pages/lesson/lesson'
       })
     }
     else if (event.detail == "my") {

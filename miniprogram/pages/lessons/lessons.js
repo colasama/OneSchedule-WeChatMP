@@ -1,50 +1,59 @@
 import Toast from '/vant-weapp/toast/toast';
 const db = wx.cloud.database();
+
 var app = getApp();
-app.globalData.userId=17637;
 Page({
   data: {
-    openid:'',
+    openid:"1212",
+    oooooopenid:"11",
     lessonDay:0,
     lessonTime:0,
     lessonName:"",
     lessonPlace:"",
     active:"lesson",
     tabactive:0,
-    show:true,
+    show:false,
     colorArrays: ["#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#0A9A84", "#61BC69", "#12AEF3", "#E29AAD"],
     wlist: []
   },
+
   onLoad() {
-    this.getOpenid()
-  },
-// 定义调用云函数获取openid
-getOpenid() {
-    var that = this;
-    let page = this;
+    var that = this
     wx.cloud.callFunction({
       name: 'getopenid',
       complete: res => {
-        var openid = res.result.openid
-        page.setData({
-          openid: openid
-        })
-        console.log(openid)
-      }
-    })
-  db.collection('timetable').where({
-    _openid: 'o95Ms5HDzgck_wzAGxAAbfKreUzs',
-  })
-    .get({
-      success: function (res) {
-        // res.data 是包含以上定义的两条记录的数组
+        var openide = res.result.openid
+       // console.log(openide)
         that.setData({
-          wlist: res.data
+          noopenid: openide,
+          oooooopenid: openide
         })
-        console.log(res.data)
+        console.log(that.data.oooooopenid)
       }
     })
+    this.viewLessons()
+    console.log("overLoad" + app.globalData.userId)
+  },
+getOpenid() {
+
 },
+viewLessons(){
+  var that=this
+  console.log("fuck" + that.data.openid)
+    db.collection('timetable').where({
+      _openid: that.data.openid
+    })
+      .get({
+        success: function (res) {
+          // res.data 是包含以上定义的两条记录的数组
+          that.setData({
+            wlist: res.data
+          })
+          console.log(res.data)
+        }
+      })
+  },
+
   onChange(event) {
     console.log(event.detail);
     if (event.detail == "todo") {
@@ -89,6 +98,12 @@ getOpenid() {
     })
   },
 
+  addclick: function (e) {
+    this.setData({
+      show:true
+    })
+  },
+
   handleInputPlace: function (e) {
     var that = this;
     this.setData({
@@ -96,15 +111,35 @@ getOpenid() {
     })
   },
 
+  showCardView:function(e){
+
+  },
+
   addConfirm: function(e){
-    var that = this
+    var that=this;
+    console.log("1")
+    db.collection('timetable').where({
+      _openid: that.data.openid,
+      day: that.data.lessonDay + 1,
+      lessonTime: that.data.lessonTime + 1
+    })
+      .get({
+        success: function (res) {
+          console.log("data.length=" + res.data[0]._id)
+          db.collection('timetable').doc(res.data[0]._id).remove({
+            success: function (res) {
+              console.log(res.data)
+            }
+          })
+        },
+      })
     db.collection('timetable').add({
       data: {
-           day:that.data.lessonDay+1,
-           lessonTime:that.data.lessonTime+1,
-           lessonLength:2,
-           lessonName:that.data.lessonName,
-           lessonPlace:that.data.lessonPlace,
+        day: that.data.lessonDay + 1,
+        lessonTime: that.data.lessonTime + 1,
+        lessonLength: 2,
+        lessonName: that.data.lessonName,
+        lessonPlace: that.data.lessonPlace,
       },
       success: function (res) {
         console.log(res)
@@ -113,6 +148,7 @@ getOpenid() {
     this.setData({
       show: false
     })
+    this.onLoad()
   },
 
   onClose(){

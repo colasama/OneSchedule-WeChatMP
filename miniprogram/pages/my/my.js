@@ -19,12 +19,12 @@ Page({
     console.log(event.detail);
     if (event.detail == "lesson") {
       wx.switchTab({
-        url: '/pages/index/index'
+        url: '/pages/lesson/lesson'
       })
     }
     else if (event.detail == "todo") {
       wx.switchTab({
-        url: '/pages/todo/todo'
+        url: '/pages/index/index'
       })
     }
   },

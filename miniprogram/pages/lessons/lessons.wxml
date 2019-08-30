@@ -3,6 +3,8 @@
   <van-tabbar-item name="todo" icon="todo-list-o">备忘</van-tabbar-item>
   <van-tabbar-item name="my" icon="friends-o">我的</van-tabbar-item>
 </van-tabbar>
+<van-icon name="add" size="70px" color="#A4D3EE" custom-class="icccc" bind:click="addclick"/>
+
 <scroll-view enable-flex="true" scroll-y="true" scroll-x="true" class="scroll">
 
     <view class="top">

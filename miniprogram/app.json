@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/lessons/lessons",
     "pages/firstlaunch/index",
+    "pages/lessons/lessons",
     "pages/import/import",
     "pages/index/index",
     "pages/secondscr/secondscr",

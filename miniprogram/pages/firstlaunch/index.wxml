@@ -7,13 +7,14 @@
       <view class='blank5'></view>
     </van-row>
     <van-row>
-      <rich-text class='wowww'>初次使用，</rich-text>
+      <rich-text class='wowww'>使用须知</rich-text>
     </van-row>
     <van-row>
-      <rich-text class='wowww2'>请完成一些</rich-text>
+      <view class='blank5'></view>
+      <view class='blank5'></view>
     </van-row>
     <van-row>
-      <rich-text class='wowww2'>基础设置。</rich-text>
+      <rich-text class='wowww2'>本小程序数据与账户绑定，请放心使用。</rich-text>
     </van-row>
   </van-col>
 
@@ -21,7 +22,7 @@
   <view class='fstcontainer'>
     <view class='blank20'></view>
     <view class='blank20'></view>
-    <button class='fstbtn' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"  hover-class='fstbtn.active'>获取用户信息</button>
+    <!--button class='fstbtn' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"  hover-class='fstbtn.active'>获取用户信息</button-->
     <view class='blank5'></view>
         <button class='fstbtn' bindtap='next' hover-class='fstbtn.active'>下一步</button>
   </view>

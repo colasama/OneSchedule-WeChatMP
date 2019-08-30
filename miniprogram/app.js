@@ -1,9 +1,10 @@
 
 //app.js
 App({
-  globalData:{
-    userId:1,
+  globalData: {
+    userId: '',
   },
+
   onLaunch: function () {
     wx.hideTabBar({});//隐藏了默认TabBar
     if (!wx.cloud) {
@@ -18,6 +19,7 @@ App({
         traceUser: true,
       })
     }
-    this.globalData = {}
-      }
+    this.globalData = {
+    }
+  }
     })

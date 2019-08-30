@@ -8,7 +8,7 @@
 
 .wowww2{
   text-align:left;
-  font-size: 80rpx;
+  font-size: 60rpx;
   header:true;
 }
 
