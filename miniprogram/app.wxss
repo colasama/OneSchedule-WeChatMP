@@ -18,6 +18,14 @@ button::after{
   border: none;
 }
 
+/**悬浮按钮**/
+.add_icon{
+  position: fixed;
+  width:42rpx;
+  height:42rpx;
+bottom: 30rpx;
+right: 20rpx;
+}
 
 page {
   background: #f6f6f6;
@@ -163,3 +171,12 @@ page {
   align-items: center;
 }
 
+.containerr {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
