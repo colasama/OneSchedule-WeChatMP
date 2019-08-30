@@ -4,29 +4,47 @@ var app = getApp();
 app.globalData.userId=17637;
 Page({
   data: {
+    openid:'',
     lessonDay:0,
-    lessonTime: 0,
+    lessonTime:0,
     lessonName:"",
     lessonPlace:"",
     active:"lesson",
     tabactive:0,
     show:true,
     colorArrays: ["#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#0A9A84", "#61BC69", "#12AEF3", "#E29AAD"],
-    wlist: [
-      { "day": 1, "lessonTime": 1, "lessonLength": 3, "lessonName": "工科数学分析","lessonPlace":"J3-205" },
-      { "day": 1, "lessonTime": 5, "lessonLength": 3, "lessonName": "工科数学分析", "lessonPlace": "J3-205"  },
-      { "day": 2, "lessonTime": 1, "lessonLength": 2,  "lessonName": "工科数学分析","lessonPlace":"J3-205"  },
-      { "day": 2, "lessonTime": 6, "lessonLength": 2,  "lessonName": "工科数学分析","lessonPlace":"J3-205"  },
-      { "day": 3, "lessonTime": 4, "lessonLength": 1,  "lessonName": "工科数学分析","lessonPlace":"J3-205"  },
-      { "day": 3, "lessonTime": 1, "lessonLength": 1,  "lessonName": "工科数学分析","lessonPlace":"J3-205"  },
-      { "day": 3, "lessonTime": 5, "lessonLength": 2,  "lessonName": "工科数学分析","lessonPlace":"J3-205"  },
-    ]
+    wlist: []
   },
-  onLoad: function () {
-
-    console.log('onLoad')
+  onLoad() {
+    this.getOpenid()
   },
-  
+// 定义调用云函数获取openid
+getOpenid() {
+    var that = this;
+    let page = this;
+    wx.cloud.callFunction({
+      name: 'getopenid',
+      complete: res => {
+        var openid = res.result.openid
+        page.setData({
+          openid: openid
+        })
+        console.log(openid)
+      }
+    })
+  db.collection('timetable').where({
+    _openid: 'o95Ms5HDzgck_wzAGxAAbfKreUzs',
+  })
+    .get({
+      success: function (res) {
+        // res.data 是包含以上定义的两条记录的数组
+        that.setData({
+          wlist: res.data
+        })
+        console.log(res.data)
+      }
+    })
+},
   onChange(event) {
     console.log(event.detail);
     if (event.detail == "todo") {
@@ -82,15 +100,11 @@ Page({
     var that = this
     db.collection('timetable').add({
       data: {
-        _id: app.globalData.userId,// 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
-         lesson:[
-           app.globalData.userId,
-           that.data.lessonDay,
-           that.data.lessonTime,
-           2,
-           that.data.lessonName,
-           that.data.lessonPlace,
-         ]
+           day:that.data.lessonDay+1,
+           lessonTime:that.data.lessonTime+1,
+           lessonLength:2,
+           lessonName:that.data.lessonName,
+           lessonPlace:that.data.lessonPlace,
       },
       success: function (res) {
         console.log(res)
