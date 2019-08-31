@@ -20,16 +20,18 @@ Page({
     lessonTime:0,
     lessonName:"",
     lessonPlace:"",
+    tabactive: 0,
+    tabdayactive:0,
     active:"lesson",
-    tabactive:0,
     show:false,
     deleteshow:false,
     buttons,
-    colorArrays: ["#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#0A9A84", "#61BC69", "#12AEF3", "#E29AAD"],
+    colorArrays: ["linear-gradient(45deg,#f2709c, #ff9472)", "linear-gradient(45deg,#FFF886, #F072B6)", "linear-gradient(45deg,#3C8CE7, #00EAFF)", "linear-gradient(45deg,#FF512F, #DD2476)", "linear-gradient(45deg,#24C6DC, #514A9D)", "linear-gradient(45deg,#E55D87, #5FC3E4)", "linear-gradient(45deg,#F05F57, #360940)", "linear-gradient(45deg,#4CB8C4, #3CD3AD)"],
     wlist: []
   },
 
   onLoad() {
+    wx.hideTabBar({})
     var that = this
     wx.cloud.callFunction({
       name: 'getopenid',
@@ -43,7 +45,7 @@ Page({
       }
     })
     setTimeout(function rua(){
-      console.log(that.data.openid)
+      console.log(app.userIII)
       that.viewLessons()
     },1500)
   },
@@ -63,7 +65,7 @@ fabButtonClick(e) {
 },
 viewLessons(){
   var that=this
-  console.log("fuck" + that.data.openid)
+  console.log("fxxk" + app.userIII)
     db.collection('timetable').where({
       _openid: that.data.openid
     })
@@ -87,27 +89,24 @@ viewLessons(){
     }
     else if (event.detail == "my") {
       wx.switchTab({
-        url: '/pages/index/index'
+        url: '/pages/my/my'
       })
     }
   },
 
-  onSelectChange(event) {
-    const { picker, value, index } = event.detail;
-    Toast(`当前值：${value}, 当前索引：${index}`);
-  },
   onTimeClick: function(event){
     var that = this;
     that.setData({
       lessonTime: event.detail.index
     })
+    console.log("Time is " + this.data.lessonTime)
   },
 
   addDelete:function(e){
     var that = this;
-    console.log("fuckkkk"+that.data.lessonDay)
+    console.log("fxxkkkk"+that.data.lessonDay)
     db.collection('timetable').where({
-      _openid: that.data.openid,
+      _openid: app.userIII,
       day: that.data.lessonDay + 1,
       lessonTime: that.data.lessonTime + 1
     })
@@ -131,6 +130,7 @@ viewLessons(){
     that.setData({
       lessonDay: event.detail.index
     })
+    console.log("Day is " + that.data.lessonDay)
   },
 
   addCancel: function(e){
@@ -166,9 +166,8 @@ viewLessons(){
 
   addConfirm: function(e){
     var that=this;
-    console.log("1")
     db.collection('timetable').where({
-      _openid: that.data.openid,
+      _openid: app.userIII,
       day: that.data.lessonDay + 1,
       lessonTime: that.data.lessonTime + 1
     })
@@ -181,23 +180,32 @@ viewLessons(){
             }
           })
         },
+        complete: function(res){
+          db.collection('timetable').add({
+            data: {
+              day: that.data.lessonDay + 1,
+              lessonTime: that.data.lessonTime + 1,
+              lessonLength: 2,
+              lessonName: that.data.lessonName,
+              lessonPlace: that.data.lessonPlace,
+            },
+            success: function (res) {
+              console.log("successful upload")
+              that.setData({
+                show: false,
+                lessonDay: 0,
+                lessonTime: 0,
+                lessonName: "",
+                lessonPlace: "",
+                tabactive: 0,
+              })
+              that.onLoad()
+            },
+          })
+
+        }
       })
-    db.collection('timetable').add({
-      data: {
-        day: that.data.lessonDay + 1,
-        lessonTime: that.data.lessonTime + 1,
-        lessonLength: 2,
-        lessonName: that.data.lessonName,
-        lessonPlace: that.data.lessonPlace,
-      },
-      success: function (res) {
-        console.log(res)
-      },
-    })
-    this.setData({
-      show: false
-    })
-    this.onLoad()
+
   },
 
   onClose(){

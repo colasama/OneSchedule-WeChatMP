@@ -1,1 +1,17 @@
 /* pages/navi/navi.wxss */
+
+.page{
+  background:linear-gradient(35deg,rgb(99, 90, 194),#24C6DC);
+  width:100%;
+  height:100vh;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo{
+  position:center;
+  width:50%;
+  text-align:center;
+  align-items: center;
+}

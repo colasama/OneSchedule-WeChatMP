@@ -1,2 +1,4 @@
 <!--pages/navi/navi.wxml-->
-<text>pages/navi/navi.wxml</text>
+<scroll-view enable-flex="true" class="page">
+<image mode="widthFix" class="logo" src="./logo.png"></image>
+</scroll-view>

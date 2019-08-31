@@ -1,16 +1,15 @@
 <van-tabbar active="{{ active }}" bind:change="onChange">
   <van-tabbar-item name="lesson" icon="clock-o">课程</van-tabbar-item>
   <van-tabbar-item name="todo" icon="todo-list-o">备忘</van-tabbar-item>
-  <van-tabbar-item name="my" icon="friends-o">今日</van-tabbar-item>
+  <van-tabbar-item name="my" icon="setting-o">设置</van-tabbar-item>
 </van-tabbar>
 
 <view class="add_icccc">
-  <wux-fab-button theme="calm" scale='0.8' spaceBetween='15' buttons="{{ buttons }}" bind:click="fabButtonClick" bind:change="deleteclick"></wux-fab-button>
+  <wux-fab-button theme="calm" scale='0.8' spaceBetween='15' buttons="{{ buttons }}" bind:click="fabButtonClick"></wux-fab-button>
 </view>
 
 
 <scroll-view enable-flex="true" scroll-y="true" scroll-x="true" class="scroll">
-
     <view class="top">
       <view wx:for="{{[' ','周一','周二','周三','周四','周五','周六','周日']}}" class="top-text">
           {{item}}
@@ -24,13 +23,12 @@
       </view>
     </view>
     <view wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12,13,14]}}">
-      <view style="width:700rpx;margin-top:{{(index+1)*80}}rpx;  position: absolute;border-bottom:1rpx solid {{'lightgray'}};border-left:1rpx solid {{'lightgray'}};">
+      <view style="width:700rpx;margin-top:{{(index+1)*80}}rpx;  position: absolute;border-bottom:1rpx dashed lightgray;border-left:1rpx dashed lightgray;">
       </view>
     </view>
 
-    <!--课表-->
     <view wx:for="{{wlist}}">
-      <view wx:if="{{item.lessonName!=0}}" class="flex-item kcb-item" bindtap="showCardView" data-statu="open" data-index="{{index}}" style="margin-left:{{(item.day-1)*100}}rpx;margin-top:{{(item.lessonTime-1)*160+5}}rpx;height:{{item.lessonLength*80-5}}rpx;background-color:{{colorArrays[index%9]}}">
+      <view wx:if="{{item.lessonName!=0}}" class="flex-item kcb-item" bindtap="showCardView" data-statu="open" data-index="{{index}}" style="margin-left:{{(item.day-1)*100}}rpx;margin-top:{{(item.lessonTime-1)*160+5}}rpx;height:{{item.lessonLength*80-5}}rpx;background:{{colorArrays[index%9]}}">
         <view class="smalltext" >{{item.lessonName}}@{{item.lessonPlace}}</view>
       </view>
     </view>
@@ -38,9 +36,9 @@
 </scroll-view>
 
 <van-popup custom-class="popcontainer" show="{{show}}" bind:close="onClose">
-<van-tabs class="tabb" active="{{ tabactive }}" bind:click="onDayClick" bind:change="onDayClick">
+<van-tabs class="tabb" active="{{ tabactive }}" bind:click="onDayClick">
   <van-tab title="周一">
-      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick" bind:click="onTimeClick">
+      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick">
       <van-tab title="第一节"></van-tab>
       <van-tab title="第二节"></van-tab>
       <van-tab title="第三节"></van-tab>
@@ -51,7 +49,7 @@
     </van-tabs>
 </van-tab>
   <van-tab title="周二">
-      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick" bind:click="onTimeClick">
+      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick">
       <van-tab title="第一节"></van-tab>
       <van-tab title="第二节"></van-tab>
       <van-tab title="第三节"></van-tab>
@@ -62,7 +60,7 @@
     </van-tabs>
   </van-tab>
   <van-tab title="周三">
-      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick" bind:click="onTimeClick">
+      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick">
       <van-tab title="第一节"></van-tab>
       <van-tab title="第二节"></van-tab>
       <van-tab title="第三节"></van-tab>
@@ -73,7 +71,7 @@
     </van-tabs>
   </van-tab>
   <van-tab title="周四">
-      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick" bind:click="onTimeClick">
+      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick">
       <van-tab title="第一节"></van-tab>
       <van-tab title="第二节"></van-tab>
       <van-tab title="第三节"></van-tab>
@@ -84,7 +82,7 @@
     </van-tabs>
   </van-tab>
   <van-tab title="周五">
-      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick" bind:click="onTimeClick">
+      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick">
       <van-tab title="第一节"></van-tab>
       <van-tab title="第二节"></van-tab>
       <van-tab title="第三节"></van-tab>
@@ -95,7 +93,7 @@
     </van-tabs>
   </van-tab>
   <van-tab title="周六">
-      <van-tabs active="{{ tabactive }}" bind:change="onDayClick" bind:click="onTimeClick">
+      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick">
       <van-tab title="第一节"></van-tab>
       <van-tab title="第二节"></van-tab>
       <van-tab title="第三节"></van-tab>
@@ -106,7 +104,7 @@
     </van-tabs>
   </van-tab>
   <van-tab title="周日">
-      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick" bind:click="onTimeClick">
+      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick">
       <van-tab title="第一节"></van-tab>
       <van-tab title="第二节"></van-tab>
       <van-tab title="第三节"></van-tab>
@@ -135,7 +133,7 @@
 </van-popup>
 
 <van-popup custom-class="popcontainerd" show="{{deleteshow}}" bind:close="onDeleteClose">
-<van-tabs class="tabb" active="{{ tabactive }}" bind:change="onDayClick">
+<van-tabs class="tabb" active="{{ tabdayactive }}" bind:change="onDayClick">
   <van-tab title="周一">
       <van-tabs active="{{ tabactive }}" bind:change="onTimeClick">
       <van-tab title="第一节"></van-tab>
@@ -170,7 +168,7 @@
     </van-tabs>
   </van-tab>
   <van-tab title="周四">
-      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick">
+    <van-tabs active="{{ tabactive }}" bind:change="onTimeClick">
       <van-tab title="第一节"></van-tab>
       <van-tab title="第二节"></van-tab>
       <van-tab title="第三节"></van-tab>
@@ -192,7 +190,7 @@
     </van-tabs>
   </van-tab>
   <van-tab title="周六">
-      <van-tabs active="{{ tabactive }}" bind:change="onDayClick">
+      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick">
       <van-tab title="第一节"></van-tab>
       <van-tab title="第二节"></van-tab>
       <van-tab title="第三节"></van-tab>

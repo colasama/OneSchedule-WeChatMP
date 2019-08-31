@@ -1,1 +1,25 @@
 /* pages/todo/todo.wxss */
+
+.uppe{
+  display:flex;
+  width:100%;
+  height:30vh;
+  background: skyblue;
+}
+
+.wowww{
+  text-align:center;
+  font-size: 60rpx;
+  color:#FFFFFF;
+}
+
+.wowww2{
+  text-align:left;
+  font-size: 60rpx;
+  header:true;
+}
+
+.todoim{
+  width:100%;
+  text-align:center;
+}

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/navi/navi",
     "pages/lessons/lessons",
     "pages/firstlaunch/index",
     "pages/import/import",
@@ -7,8 +8,7 @@
     "pages/secondscr/secondscr",
     "pages/todo/todo",
     "pages/my/my",
-    "pages/tutorial/tutorial",
-    "pages/navi/navi"
+    "pages/tutorial/tutorial"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -39,13 +39,17 @@
     "van-collapse": "/miniprogram_npm/vant-weapp/collapse/index",
     "van-collapse-item": "/miniprogram_npm/vant-weapp/collapse-item/index",
     "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
-    "wux-fab-button": "/dist/fab-button/index"
+    "wux-fab-button": "/dist/fab-button/index",
+    "van-swipe-cell": "/miniprogram_npm/vant-weapp/swipe-cell/index",
+    "van-switch-cell": "/miniprogram_npm/vant-weapp/switch-cell/index",
+    "van-checkbox": "/miniprogram_npm/vant-weapp/checkbox/index",
+    "van-checkbox-group": "/miniprogram_npm/vant-weapp/checkbox-group/index"
   },
 
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/index/index"
+        "pagePath": "pages/my/my"
       },
       {
         "pagePath": "pages/todo/todo"

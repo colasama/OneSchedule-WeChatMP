@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active: "my"
+    active: "my",
+    list: ['蓝色', '绿色', '红色'],
+    result: ['蓝色']
   },
 
   /**
@@ -24,10 +26,25 @@ Page({
     }
     else if (event.detail == "todo") {
       wx.switchTab({
-        url: '/pages/index/index'
+        url: '/pages/todo/todo'
       })
     }
   },
+
+  onCChange(event) {
+    this.setData({
+      result: event.detail
+    });
+  },
+
+  toggle(event) {
+    const { index } = event.currentTarget.dataset;
+    const checkbox = this.selectComponent(`.checkboxes-${index}`);
+    checkbox.toggle();
+  },
+
+  noop() { },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

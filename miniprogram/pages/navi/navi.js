@@ -1,7 +1,8 @@
 // pages/navi/navi.js
 const db = wx.cloud.database();
+const app=getApp()
 Page({
-
+  
   /**
    * 页面的初始数据
    */
@@ -14,19 +15,42 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    db.collection('timetable').doc('{{serial}}').get({
-      success: res => {
-        wx.switchTab({
-          url: '/pages/index/index'
+    wx.hideTabBar({})
+    var that = this
+    wx.cloud.callFunction({
+      name: 'getopenid',
+      complete: res => {
+        var openide = res.result.openid
+        // console.log(openide)
+        that.setData({
+          noopenid: openide,
+          openid: openide
         })
-      },
-      fail: function (res) {
-        console.log("fail")
-        wx.redirectTo({
-          url: '/pages/firstlaunch/firstlaunch',
-        })
+        app.userIII = openide
+        console.log("navi"+app.userIII)
+        setTimeout(function rua() {
+          db.collection('timetable').where({
+            _openid: app.userIII,
+          })
+            .get({
+              success: res => {
+                wx.switchTab({
+                  url: '/pages/lessons/lessons',
+                })
+              },
+              fail: function (res) {
+                wx.redirectTo({
+                  url: '/pages/firstlaunch/index',
+                })
+              }
+            })
+        }, 1000)
       }
     })
+    setTimeout(function rua() {
+    }, 1500)
+
+
   },
 
   /**
