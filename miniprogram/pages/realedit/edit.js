@@ -1,27 +1,15 @@
 // pages/secondscr/secondscr.js
 const db = wx.cloud.database();
-var extraLine = [];
-var num = [1,2,3,4,5,6,7];
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    activenow:0,
-    ne:[],
-    tue:[1,2,3],
-    stepsnow: [
-      {
-        text: '获取用户信息'
-      },
-      {
-        text: '导入课表'
-      },
-      {
-        text: '完成'
-      }
-    ]
+    id:'000',
+    grade:'2018',
+    college:'软件学院'
   },
   
   lSearch: function(e){
@@ -67,10 +55,46 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
+  formSubmit:function(e){
+    console.log(e.detail.value);
+    var that=this;
+    var ppp=e;
+    that.setData({
+      id:e.detail.value.id,
+      grade:e.detail.value.grade,
+      college:e.detail.value.college,
+    },() => {
+      console.log(that.data.grade)
+      db.collection('user').where({
+        _openid: App.userIII,
+      })
+      .get({
+        success: function(res) {
+          db.collection('user').doc(res.data[0]._id).update({
+            data: {
+              idd:e.detail.value.id,
+              grade:e.detail.value.grade,
+              college:e.detail.value.college,
+            },
+            success: function(res) {
+              console.log("Update user info success")
+              wx.switchTab({
+                url:"/pages/my/my"
+              })
+            }
+          })
+          
+        }
+      })
+    })
+  },
   onReady: function () {
 
   },
 
+  onChange(event) {
+
+  },
   /**
    * 生命周期函数--监听页面显示
    */

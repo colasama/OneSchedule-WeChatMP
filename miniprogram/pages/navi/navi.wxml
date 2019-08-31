@@ -1,4 +1,8 @@
 <!--pages/navi/navi.wxml-->
 <scroll-view enable-flex="true" class="page">
-<image mode="widthFix" class="logo" src="./logo.png"></image>
+<view class='imagesize'>
+  <image src="./logo.png" class='in-image'>
+  </image>
+</view>
+<!--image mode="widthFix" class="logo" src="./logo.png"></image-->
 </scroll-view>

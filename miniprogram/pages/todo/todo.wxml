@@ -1,6 +1,6 @@
 <van-tabbar active="{{ active }}" bind:change="onChange">
   <van-tabbar-item name="lesson" icon="clock-o">课程</van-tabbar-item>
-  <van-tabbar-item name="todo" icon="todo-list-o">备忘</van-tabbar-item>
+  <van-tabbar-item name="todo" icon="eye-o">发现</van-tabbar-item>
   <van-tabbar-item name="my" icon="setting-o">设置</van-tabbar-item>
 </van-tabbar>
 
@@ -8,9 +8,22 @@
   <image mode="widthFix" class="todoim" src="./todo.png"></image>
 </view>
 
-<van-swipe-cell id="swipe-cell" right-width="{{ 65 }}" left-width="{{ 65 }}" async-close bind:close="onCellClose">
-  <van-cell-group>
-    <van-cell title="待办事项"/>
-  </van-cell-group>
-  <view slot="right">删除</view>
-</van-swipe-cell>
+<van-card
+  desc="2018级21系课表"
+  title="2018级21系课表"
+  thumb="{{ imageURL }}"
+>
+  <view slot="footer">
+    <van-button size="small" bind:click="importLesson">导入</van-button>
+  </view>
+</van-card>
+
+<van-card
+  desc="2017级21系课表"
+  title="2017级21系课表"
+  thumb="{{ imageURL }}"
+>
+  <view slot="footer">
+    <van-button size="small" bind:click="importLesson">导入</van-button>
+  </view>
+</van-card>

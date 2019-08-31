@@ -29,22 +29,42 @@ Page({
         app.userIII = openide
         console.log("navi"+app.userIII)
         setTimeout(function rua() {
-          db.collection('timetable').where({
-            _openid: app.userIII,
+          db.collection('user').where({
+            _openid: app.userIII
           })
             .get({
               success: res => {
-                wx.switchTab({
-                  url: '/pages/lessons/lessons',
-                })
-              },
-              fail: function (res) {
-                wx.redirectTo({
-                  url: '/pages/firstlaunch/index',
-                })
+                if (res.data.length!=0)
+                {
+                  console.log(res.data)
+                  wx.switchTab({
+                    url: '/pages/lessons/lessons',
+                  })
+                }
+                else{
+                  wx.redirectTo({
+                    url: '/pages/firstlaunch/index',
+                  })
+                }
               }
             })
+            db.collection('user').where({
+              _openid: app.userIII
+            })
+              .get({
+                success: res => {
+                  wx.switchTab({
+                    url: '/pages/lessons/lessons',
+                  })
+                },
+                fail: err => {
+                  wx.redirectTo({
+                    url: '/pages/firstlaunch/index',
+                  })
+                }
+              })
         }, 1000)
+
       }
     })
     setTimeout(function rua() {

@@ -1,4 +1,6 @@
 // pages/my/my.js
+const app=getApp();
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -6,6 +8,9 @@ Page({
    */
   data: {
     active: "my",
+    id:app.id,
+    grade:app.grade,
+    college:app.college,
     list: ['蓝色', '绿色', '红色'],
     result: ['蓝色']
   },
@@ -14,14 +19,36 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    db.collection('user').where({
+      _openid: app.userIII,
+    })
+      .get({
+        success: function (res) {
+          app.id=res.data[0].idd
+          app.college = res.data[0].college
+          app.grade = res.data[0].grade
+          console.log(res.data)
+          console.log(app.id)
+          that.setData({
+            id: res.data[0].idd,
+            grade: res.data[0].grade,
+            college: res.data[0].college
+          })
+        }
+      })
   },
 
+  editProfile:function(){
+    wx.redirectTo({
+      url:"/pages/realedit/edit"
+    })
+  },
   onChange(event) {
     console.log(event.detail);
     if (event.detail == "lesson") {
       wx.switchTab({
-        url: '/pages/lesson/lesson'
+        url: '/pages/lessons/lessons'
       })
     }
     else if (event.detail == "todo") {

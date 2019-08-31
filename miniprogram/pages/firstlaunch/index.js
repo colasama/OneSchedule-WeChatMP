@@ -17,8 +17,8 @@ Page({
   },
 
   next: function(e){
-      wx.switchTab({
-        url: '/pages/lessons/lessons',
+      wx.redirectTo({
+        url: '/pages/edit/edit',
       })
   }, 
   /**

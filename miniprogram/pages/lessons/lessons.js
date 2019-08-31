@@ -65,7 +65,7 @@ fabButtonClick(e) {
 },
 viewLessons(){
   var that=this
-  console.log("fxxk" + app.userIII)
+  console.log("f:" + app.userIII)
     db.collection('timetable').where({
       _openid: that.data.openid
     })

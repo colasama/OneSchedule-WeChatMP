@@ -19,6 +19,9 @@ App({
     }
   },
   userIII:'1212',
+  id:'',
+  grade:'',
+  college:'',
   globalData: {
     userId: '2222',
   }

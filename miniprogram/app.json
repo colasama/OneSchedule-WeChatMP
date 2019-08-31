@@ -1,11 +1,12 @@
 {
   "pages": [
     "pages/navi/navi",
+    "pages/realedit/edit",
+    "pages/edit/edit",
     "pages/lessons/lessons",
     "pages/firstlaunch/index",
     "pages/import/import",
     "pages/index/index",
-    "pages/secondscr/secondscr",
     "pages/todo/todo",
     "pages/my/my",
     "pages/tutorial/tutorial"
@@ -43,7 +44,10 @@
     "van-swipe-cell": "/miniprogram_npm/vant-weapp/swipe-cell/index",
     "van-switch-cell": "/miniprogram_npm/vant-weapp/switch-cell/index",
     "van-checkbox": "/miniprogram_npm/vant-weapp/checkbox/index",
-    "van-checkbox-group": "/miniprogram_npm/vant-weapp/checkbox-group/index"
+    "van-checkbox-group": "/miniprogram_npm/vant-weapp/checkbox-group/index",
+    "van-field": "/miniprogram_npm/vant-weapp/field/index",
+    "van-tree-select": "/miniprogram_npm/vant-weapp/tree-select/index",
+    "van-card": "/miniprogram_npm/vant-weapp/card/index"
   },
 
   "tabBar": {

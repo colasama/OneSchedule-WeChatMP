@@ -1,13 +1,43 @@
 // pages/todo/todo.js
+const db = wx.cloud.database()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    active: "todo"
+    active: "todo",
+    imageURL: "/pages/todo/soft.png"
   },
+  importLesson:function(e){
+    db.collection('timetable').where({
+      _openid: 'o95Ms5HDzgck_wzAGxAAbfKreUzs',
+    })
+      .get({
+        success: function (res) {//把这里写好就行了！！啊啊啊！！！
+          console.log(res.data.length)
+          for (var i = 0; i < res.data.length; i++) {
+            db.collection('timetable').add({
+              data: {
+                day: res.data[i].lessonDay,
+                lessonTime: res.data[i].lessonTime,
+                lessonLength: 2,
+                lessonName: res.data[i].lessonName,
+                lessonPlace: res.data[i].lessonPlace,
+              },
+              success: function (res) {
+                console.log(res)
+                wx.switchTab({
+                  url:"/pages/lessons/lessons"
+                })
+              }
+            })
+          }
+        }
+      })
+    ;
 
+  },
   /**
    * 生命周期函数--监听页面加载
    */

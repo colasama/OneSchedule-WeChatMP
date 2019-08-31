@@ -1,0 +1,38 @@
+
+<view style="flex-direction:column;">
+  <image mode="widthFix" class="todoim" src="./edit.png"></image>
+</view>
+
+<!--van-switch-cell
+  title="样式切换"
+/-->
+<form bindsubmit="formSubmit">
+  <van-field
+    name="id"
+    required
+    clearable
+    label="学号"
+    placeholder="请输入你的学号"
+    bind:click-icon="onClickIcon"
+  />
+
+  <van-field
+    name="grade"
+    label="年级"
+    placeholder="请输入你的年级"
+    required
+    border="{{ false }}"
+  />
+
+    <van-field
+    name="college"
+    label="学院"
+    placeholder="请输入你的学院"
+    required
+    border="{{ false }}"
+  />
+  <view class="container">
+    <button class="butttt" size="large" formType="submit" type="primary">提交</button>
+  </view>
+</form>
+
