@@ -24,14 +24,14 @@ Page({
 
   onChange(event) {
     console.log(event.detail);
-    if (event.detail == "lesson") {
+    if (event.detail == "my") {
       wx.switchTab({
-        url: '/pages/lesson/lesson'
+        url: '/pages/index/index'
       })
     }
-    else if (event.detail == "my") {
+    else if (event.detail == "lesson") {
       wx.switchTab({
-        url: '/pages/my/my'
+        url: '/pages/lessons/lessons'
       })
     }
   },

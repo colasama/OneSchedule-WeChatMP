@@ -1,6 +1,17 @@
 import Toast from '/vant-weapp/toast/toast';
 const db = wx.cloud.database();
 var app = getApp();
+
+const buttons = [{
+  label: 'lessonAdd',
+  icon:"./resources/add.png",
+},
+{
+  label: 'lessonDelete',
+  icon: "./resources/delete.png",
+}
+]
+
 Page({
   data: {
     openid:"1212",
@@ -12,12 +23,13 @@ Page({
     active:"lesson",
     tabactive:0,
     show:false,
+    deleteshow:false,
+    buttons,
     colorArrays: ["#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#0A9A84", "#61BC69", "#12AEF3", "#E29AAD"],
     wlist: []
   },
 
   onLoad() {
-    console.log(app.userIII)
     var that = this
     wx.cloud.callFunction({
       name: 'getopenid',
@@ -26,22 +38,34 @@ Page({
        // console.log(openide)
         that.setData({
           noopenid: openide,
-          oooooopenid: openide
+          openid: openide
         })
-        console.log(that.data.oooooopenid)
       }
     })
-    this.viewLessons()
-    console.log("overLoad" + app.globalData.userId)
+    setTimeout(function rua(){
+      console.log(that.data.openid)
+      that.viewLessons()
+    },1500)
   },
-getOpenid() {
-
+fabButtonClick(e) {
+  if(e.detail.index==0)
+  {
+    this.setData({
+      show: true
+    })
+  }
+  else
+  {
+    this.setData({
+      deleteshow: true
+    })
+  }
 },
 viewLessons(){
   var that=this
-  console.log("fuck" + app.userIII)
+  console.log("fuck" + that.data.openid)
     db.collection('timetable').where({
-      _openid: app.userIII
+      _openid: that.data.openid
     })
       .get({
         success: function (res) {
@@ -63,7 +87,7 @@ viewLessons(){
     }
     else if (event.detail == "my") {
       wx.switchTab({
-        url: '/pages/my/my'
+        url: '/pages/index/index'
       })
     }
   },
@@ -77,6 +101,29 @@ viewLessons(){
     that.setData({
       lessonTime: event.detail.index
     })
+  },
+
+  addDelete:function(e){
+    var that = this;
+    console.log("fuckkkk"+that.data.lessonDay)
+    db.collection('timetable').where({
+      _openid: that.data.openid,
+      day: that.data.lessonDay + 1,
+      lessonTime: that.data.lessonTime + 1
+    })
+      .get({
+        success: function (res) {
+          db.collection('timetable').doc(res.data[0]._id).remove({
+            success: function (res) {
+              console.log("success delete")
+              that.onLoad()
+              that.setData({
+                deleteshow:false
+              })
+            }
+          })
+        },
+      })
   },
 
   onDayClick: function (event) {
@@ -100,6 +147,7 @@ viewLessons(){
   },
 
   addclick: function (e) {
+    console.log(e.detail)
     this.setData({
       show:true
     })
@@ -155,6 +203,12 @@ viewLessons(){
   onClose(){
     this.setData({
       show:false,
+    })
+  },
+
+  onDeleteClose() {
+    this.setData({
+      deleteshow: false,
     })
   }
 })

@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active: 'todo'
+    active: 'todo',
   },
 
   bindGetUserInfo(res) {
@@ -17,7 +17,7 @@ Page({
   },
 
   next: function(e){
-      wx.redirectTo({
+      wx.switchTab({
         url: '/pages/lessons/lessons',
       })
   }, 

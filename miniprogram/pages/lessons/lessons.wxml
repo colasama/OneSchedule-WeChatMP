@@ -1,9 +1,13 @@
 <van-tabbar active="{{ active }}" bind:change="onChange">
   <van-tabbar-item name="lesson" icon="clock-o">课程</van-tabbar-item>
   <van-tabbar-item name="todo" icon="todo-list-o">备忘</van-tabbar-item>
-  <van-tabbar-item name="my" icon="friends-o">我的</van-tabbar-item>
+  <van-tabbar-item name="my" icon="friends-o">今日</van-tabbar-item>
 </van-tabbar>
-<van-icon name="add" size="70px" color="#A4D3EE" custom-class="icccc" bind:click="addclick"/>
+
+<view class="add_icccc">
+  <wux-fab-button theme="calm" scale='0.8' spaceBetween='15' buttons="{{ buttons }}" bind:click="fabButtonClick" bind:change="deleteclick"></wux-fab-button>
+</view>
+
 
 <scroll-view enable-flex="true" scroll-y="true" scroll-x="true" class="scroll">
 
@@ -26,7 +30,7 @@
 
     <!--课表-->
     <view wx:for="{{wlist}}">
-      <view class="flex-item kcb-item" bindtap="showCardView" data-statu="open" data-index="{{index}}" style="margin-left:{{(item.day-1)*100}}rpx;margin-top:{{(item.lessonTime-1)*160+5}}rpx;height:{{item.lessonLength*80-5}}rpx;background-color:{{colorArrays[index%9]}}">
+      <view wx:if="{{item.lessonName!=0}}" class="flex-item kcb-item" bindtap="showCardView" data-statu="open" data-index="{{index}}" style="margin-left:{{(item.day-1)*100}}rpx;margin-top:{{(item.lessonTime-1)*160+5}}rpx;height:{{item.lessonLength*80-5}}rpx;background-color:{{colorArrays[index%9]}}">
         <view class="smalltext" >{{item.lessonName}}@{{item.lessonPlace}}</view>
       </view>
     </view>
@@ -34,7 +38,103 @@
 </scroll-view>
 
 <van-popup custom-class="popcontainer" show="{{show}}" bind:close="onClose">
+<van-tabs class="tabb" active="{{ tabactive }}" bind:click="onDayClick" bind:change="onDayClick">
+  <van-tab title="周一">
+      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick" bind:click="onTimeClick">
+      <van-tab title="第一节"></van-tab>
+      <van-tab title="第二节"></van-tab>
+      <van-tab title="第三节"></van-tab>
+      <van-tab title="第四节"></van-tab>
+      <van-tab title="第五节"></van-tab>
+      <van-tab title="第六节"></van-tab>
+      <van-tab title="第七节"></van-tab>
+    </van-tabs>
+</van-tab>
+  <van-tab title="周二">
+      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick" bind:click="onTimeClick">
+      <van-tab title="第一节"></van-tab>
+      <van-tab title="第二节"></van-tab>
+      <van-tab title="第三节"></van-tab>
+      <van-tab title="第四节"></van-tab>
+      <van-tab title="第五节"></van-tab>
+      <van-tab title="第六节"></van-tab>
+      <van-tab title="第七节"></van-tab>
+    </van-tabs>
+  </van-tab>
+  <van-tab title="周三">
+      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick" bind:click="onTimeClick">
+      <van-tab title="第一节"></van-tab>
+      <van-tab title="第二节"></van-tab>
+      <van-tab title="第三节"></van-tab>
+      <van-tab title="第四节"></van-tab>
+      <van-tab title="第五节"></van-tab>
+      <van-tab title="第六节"></van-tab>
+      <van-tab title="第七节"></van-tab>
+    </van-tabs>
+  </van-tab>
+  <van-tab title="周四">
+      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick" bind:click="onTimeClick">
+      <van-tab title="第一节"></van-tab>
+      <van-tab title="第二节"></van-tab>
+      <van-tab title="第三节"></van-tab>
+      <van-tab title="第四节"></van-tab>
+      <van-tab title="第五节"></van-tab>
+      <van-tab title="第六节"></van-tab>
+      <van-tab title="第七节"></van-tab>
+    </van-tabs>
+  </van-tab>
+  <van-tab title="周五">
+      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick" bind:click="onTimeClick">
+      <van-tab title="第一节"></van-tab>
+      <van-tab title="第二节"></van-tab>
+      <van-tab title="第三节"></van-tab>
+      <van-tab title="第四节"></van-tab>
+      <van-tab title="第五节"></van-tab>
+      <van-tab title="第六节"></van-tab>
+      <van-tab title="第七节"></van-tab>
+    </van-tabs>
+  </van-tab>
+  <van-tab title="周六">
+      <van-tabs active="{{ tabactive }}" bind:change="onDayClick" bind:click="onTimeClick">
+      <van-tab title="第一节"></van-tab>
+      <van-tab title="第二节"></van-tab>
+      <van-tab title="第三节"></van-tab>
+      <van-tab title="第四节"></van-tab>
+      <van-tab title="第五节"></van-tab>
+      <van-tab title="第六节"></van-tab>
+      <van-tab title="第七节"></van-tab>
+    </van-tabs>
+  </van-tab>
+  <van-tab title="周日">
+      <van-tabs active="{{ tabactive }}" bind:change="onTimeClick" bind:click="onTimeClick">
+      <van-tab title="第一节"></van-tab>
+      <van-tab title="第二节"></van-tab>
+      <van-tab title="第三节"></van-tab>
+      <van-tab title="第四节"></van-tab>
+      <van-tab title="第五节"></van-tab>
+      <van-tab title="第六节"></van-tab>
+      <van-tab title="第七节"></van-tab>
+    </van-tabs>
+  </van-tab>
+</van-tabs>
+<view class="blank10"></view>
+<view class="layout_horizontal">
+<text style="padding-left：10px;font-size:16px;">添加课程</text>
+</view>
+<view class="layout_horizontal">
+  <!--text style="white-space:pre-wrap;font-size:14px;">课程</text-->
+  <input id="lessonN" bindinput="handleInputLesson" value='{{lessonName}}' class='input-radius' focus="true" confirm-type="next" placeholder="请输入课程名称"></input>
+</view>
+<view class="layout_horizontal">
+  <input id="lessonP" bindinput="handleInputPlace" value='{{lessonPlace}}' class='input-radius' focus="true" confirm-type="next" placeholder="请输入上课地点"></input>
+</view>
+<view class="layout_horizontal">
+<van-button plain size='small' bindtap='addCancel'>取消</van-button>
+<van-button plain size='small' bindtap='addConfirm'>确认</van-button>
+</view>
+</van-popup>
 
+<van-popup custom-class="popcontainerd" show="{{deleteshow}}" bind:close="onDeleteClose">
 <van-tabs class="tabb" active="{{ tabactive }}" bind:change="onDayClick">
   <van-tab title="周一">
       <van-tabs active="{{ tabactive }}" bind:change="onTimeClick">
@@ -114,19 +214,6 @@
     </van-tabs>
   </van-tab>
 </van-tabs>
-<view class="blank10"></view>
-<view class="layout_horizontal">
-<text style="padding-left：10px;font-size:16px;">添加课程</text>
-</view>
-<view class="layout_horizontal">
-  <!--text style="white-space:pre-wrap;font-size:14px;">课程</text-->
-  <input id="lessonN" bindinput="handleInputLesson" value='{{lessonName}}' class='input-radius' focus="true" confirm-type="next" placeholder="请输入课程名称"></input>
-</view>
-<view class="layout_horizontal">
-  <input id="lessonP" bindinput="handleInputPlace" value='{{lessonPlace}}' class='input-radius' focus="true" confirm-type="next" placeholder="请输入上课地点"></input>
-</view>
-<view class="layout_horizontal">
-<van-button plain size='small' bindtap='addCancel'>取消</van-button>
-<van-button plain size='small' bindtap='addConfirm'>确认</van-button>
-</view>
+<view class="blank20"></view>
+<van-button type="danger" class="dekl" size="large" bindtap='addDelete'>确认删除</van-button>
 </van-popup>

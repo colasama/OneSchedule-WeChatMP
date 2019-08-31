@@ -7,7 +7,7 @@ Page({
   data: {
       gradienn: '#FF0000',
       ne:[],
-      active: 'lesson',
+      active: 'my',
       activedate: 'mon',
       listt: [{
         name: 'div',
@@ -30,9 +30,9 @@ Page({
         url: '/pages/todo/todo'
       })
     }
-    else if (event.detail == "my") {
+    else if (event.detail == "lesson") {
       wx.switchTab({
-        url: '/pages/my/my'
+        url: '/pages/lessons/lessons'
       })
     }
   },

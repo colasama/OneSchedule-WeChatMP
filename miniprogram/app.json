@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/firstlaunch/index",
     "pages/lessons/lessons",
+    "pages/firstlaunch/index",
     "pages/import/import",
     "pages/index/index",
     "pages/secondscr/secondscr",
@@ -18,6 +18,8 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
+
+  "navigationBarTitleText": "FabButton",
 
   "usingComponents": {
     "van-button": "/miniprogram_npm/vant-weapp/button/index",
@@ -36,7 +38,8 @@
     "van-picker": "/miniprogram_npm/vant-weapp/picker/index",
     "van-collapse": "/miniprogram_npm/vant-weapp/collapse/index",
     "van-collapse-item": "/miniprogram_npm/vant-weapp/collapse-item/index",
-    "van-icon": "/miniprogram_npm/vant-weapp/icon/index"
+    "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
+    "wux-fab-button": "/dist/fab-button/index"
   },
 
   "tabBar": {
@@ -48,7 +51,7 @@
         "pagePath": "pages/todo/todo"
       },
       {
-        "pagePath": "pages/my/my"
+        "pagePath": "pages/lessons/lessons"
       }
     ]
   }

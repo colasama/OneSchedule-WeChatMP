@@ -12,6 +12,8 @@
 }
 
 .smalltext {
+  width: 90rpx;
+  word-wrap:break-word;
   font-size: 8pt;
   color: #fff;
   padding-left: 2px;
@@ -77,6 +79,17 @@
   height:55vh;
 }
 
+.popcontainerd{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50rpx 0;
+  box-sizing: border-box;
+  width:40vh;
+  height:30vh;
+}
+
 .addbutton{
   width: 40%;
   height:15%;
@@ -86,6 +99,9 @@
   align-items: center;
 }
 
+.dekl{
+  width: 80%;
+}
 .input-radius{
   min-height:70%;
   border-radius: 10px;
@@ -99,10 +115,20 @@
   align-items: center;
 }
 
-.icccc{
-  position:absolute;
-  left:580rpx;
-  top:930rpx;
+.add_icccc{
+  width: 100%;
+  position: fixed;
+  bottom: 120rpx;
+  right: -580rpx;
+
+}
+
+.icccc
+{
+  margin-top: 30rpx;
+  border-radius: 35px;
+  bottom:20rpx;
+  /**box-shadow: 2px 2px 2px #888888;**/
 }
 
 .layout_horizontal{
