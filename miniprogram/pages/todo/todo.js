@@ -19,7 +19,7 @@ Page({
           for (var i = 0; i < res.data.length; i++) {
             db.collection('timetable').add({
               data: {
-                day: res.data[i].lessonDay,
+                day: res.data[i].day,
                 lessonTime: res.data[i].lessonTime,
                 lessonLength: 2,
                 lessonName: res.data[i].lessonName,
@@ -27,9 +27,12 @@ Page({
               },
               success: function (res) {
                 console.log(res)
-                wx.switchTab({
-                  url:"/pages/lessons/lessons"
-                })
+                if(i==res.data.length-1)
+                {
+                  wx.switchTab({
+                    url: "/pages/lessons/lessons"
+                  })
+                }
               }
             })
           }

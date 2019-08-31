@@ -48,21 +48,6 @@ Page({
                 }
               }
             })
-            db.collection('user').where({
-              _openid: app.userIII
-            })
-              .get({
-                success: res => {
-                  wx.switchTab({
-                    url: '/pages/lessons/lessons',
-                  })
-                },
-                fail: err => {
-                  wx.redirectTo({
-                    url: '/pages/firstlaunch/index',
-                  })
-                }
-              })
         }, 1000)
 
       }
